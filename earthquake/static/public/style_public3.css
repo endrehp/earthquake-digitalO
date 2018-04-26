@@ -36,6 +36,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
     bottom: 0;
     left: 200px;
     width: 100%; 
+    
 }
 
 #Map {
@@ -44,9 +45,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   width:100%;
   left: 200px;
 }
-.speed {
-    margin-left:20px;
+.slide-btn {
+    height: 40px;
+    width: 40px;
+    margin-left:20px;   
+    margin-bottom: 3px;
+    background-color: #333333;
+    color: #c1820f;
+    border:none;
+    font-size:35px;
+    
+    
 }
+
 
 #time {
   float: left
@@ -132,7 +143,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 }
 
 .slidecontainer {
-  width: 80%;
+  width: 750px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 0px;
 }
 .slider {
     -webkit-appearance: none;
@@ -184,4 +198,96 @@ table: {
 
 td: {
     height: 10px;
+}
+
+#flexFooter{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.button_row {
+    width: 250px;
+    margin-bottom: 0px ;
+}
+
+
+.timeInfo{
+    margin-left: 10px;
+}
+
+.stop-btn{
+    height: 35px;
+    width: 30px;  
+    background-color: #333333;
+    color: #c1820f;
+    border:none;
+    font-size:20px; 
+
+}
+
+.speed_col{
+    height: 30px;
+    width: 40px;  
+    background-color: #333333;
+    color: #c1820f;
+    border:none;
+    font-size:15px; 
+    
+}
+.speed_col:hover{
+     cursor: pointer;
+}
+
+.slide-btn:hover{
+     cursor: pointer;
+}
+
+.stop-btn:hover{
+     cursor: pointer;
+}
+
+
+.magnitude{
+    font-size:20;
+    color: red;
+    width: 50px;
+}
+
+
+.titleLoc {
+    width: 150px;
+}
+
+
+.title {
+    font-size:15 ;
+    text-align: center;
+    
+}
+
+.city_info {
+    text-align:center;
+    font-size:10;
+    
+}
+
+.header_row {
+}
+
+
+
+
+
+#home_button {
+    position: fixed;
+    right: 10px;
+    bottom: 80px;
+    z-index: +1;    
+}
+
+.mag_head {
+    width: 50px;
+}
+
+.date_head {
+    width: 150px;
 }
