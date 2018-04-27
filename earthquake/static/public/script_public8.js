@@ -246,7 +246,7 @@ function select_earthquake(e) {
         */
     };
     
-    e.style.background = 'black';
+    e.style.background = '#333333';
     e.style.color = 'white';
     //e.getElementsByClassName('table_row')[0].style.background = 'black';
     //e.getElementsByClassName('table_row')[1].style.background = 'black';
@@ -269,7 +269,7 @@ function speed_x(e) {
         //document.getElementsByClassName('speed_col')[i].style.color = 'black';
     };
     
-    //e.style.color='white';
+    e.style.color='white';
     e.style.background='black';
     document.getElementById('play-pause').click();
     document.getElementById('play-pause').click();
@@ -301,25 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*
 
-// Get the modal
-var modal = document.getElementById('myModal');
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+
 
 */
