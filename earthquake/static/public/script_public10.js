@@ -43,7 +43,6 @@ map.on('load', function() {
     epi_info_url = 'media/epi_public_' + title + '.json'    
     
     getEpiInfo(epi_info_url)
-    console.lgo
     console.log(epi_speed)
     
     
