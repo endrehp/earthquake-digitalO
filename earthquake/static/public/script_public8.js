@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-console.log('begynn igjen')
+console.log('bejunn igjen')
     
 var l = 0;
 var v =[];
@@ -18,7 +18,6 @@ var epi_info_url;
 var epi_speed;
 var epi_delay;
 var slider_end_time;
-
 
     
 var map = new mapboxgl.Map({
@@ -276,6 +275,31 @@ function speed_x(e) {
     document.getElementById('play-pause').click();
 };
 
+//set color by magnitude
+
+
+document.addEventListener('DOMContentLoaded', function() {
+   
+    var magnitudes = document.getElementsByClassName('magnitude')
+    
+    for (var j = 0; j < magnitudes.length; j++){
+    var value = Number(magnitudes[j].innerText);
+        
+    if (value > 6.0) {
+        magnitudes[j].style.color = 'red';
+    }
+    
+    else if (value > 4.0) {
+        magnitudes[j].style.color = 'orange';
+    }
+    else {
+        magnitudes[j].style.color = 'green';
+    }
+    }
+}, false);
+
+
+/*
 
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -298,3 +322,4 @@ window.onclick = function(event) {
     }
 }
 
+*/
