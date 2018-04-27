@@ -1,0 +1,57 @@
+body {
+  margin: 20;
+  padding: 0;
+  font-family: Georgia, serif;
+}
+
+button {
+	border-radius: 10px;
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(255,130,0);
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Georgia, serif;
+	
+}
+
+button:hover {
+    background-color: #e7e7e7;
+}
+
+.buttons{
+	text-align: center;
+	vertical-align: middle;
+    padding-top: 20px;
+    position: relative;
+    right:-5px;
+
+}
+
+#first{
+    color: rgb(255,130,0);
+    font-size: 32px;
+    text-align: center;
+}
+
+
+#article {
+    color: grey;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+#logoutdiv {
+   position:absolute;
+   top:15px;
+   right:15px;
+}

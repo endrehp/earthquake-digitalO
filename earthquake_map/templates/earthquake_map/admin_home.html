@@ -1,27 +1,36 @@
 <html>
-    {% load static %}
+    {% load static %} 
 	<head>
 		<meta charset='utf-8' />
 		<title>SkyAlert</title>
 		<link type= "text/css" rel = "stylesheet"
-			  href = "{% static 'home/main.css'%}" >
+			  href = "{% static 'home/main1.css'%}" >
 		
 	</head>
 	<body>
+		<div id="logo">
+			<img src="{% static 'editpublic/skyalert_logo.png'%}" alt="Mountain View" width="130" height="70">
+		</div>
+        <div class='intro'>
+			<p id = "first"> Earthquake Visualization System </p>
+        </div>
 		<div class = "buttons">
 			<a href = "{% url 'analysis' %}"><button id = "private">Analysis</button></a>
 			<a href = "{% url 'public' %}"><button id = "public">Public</button></a>
             <a href = "{% url 'edit_public' %}"><button id = "editpublic">Edit Public</button></a>
              <a href = "{% url 'data' %}"><button id = "upload">Data</button></a>
-            <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
-        <form id='logout' method='POST' action="{% url 'logout' %}">
+         </div>
+         <div id = 'logoutdiv'>
+         	<a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+         </div>
+
+        <div id = "intro">
+			<p id = "article"> An intuitive way to look at our progressive early Earthquake warning system all across Mexico. 
+			</p>
+		</div>
+		 <form id='logout' method='POST' action="{% url 'logout' %}">
         {% csrf_token %}
             <input type='hidden' />
         </form> 
-		
-		</div>
 	
 	</body>
-
-
-</html>
