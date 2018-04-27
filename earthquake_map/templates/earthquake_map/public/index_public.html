@@ -30,7 +30,7 @@
 {% if user.is_authenticated %}
 <a id='home_button' href="{% url 'admin_home' %}"><span class="oi oi-home"></span></a>
 {% else %}
-<a id='home_button' href="{% url 'login' %}">Admin</a>
+<a id='adm_button' href="{% url 'login' %}">Admin</a>
 {% endif %}
 
     

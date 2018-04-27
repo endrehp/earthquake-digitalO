@@ -282,6 +282,13 @@ td: {
     z-index: +1;
     font-size: 30px;
 }
+#adm_button{
+    position: fixed;
+    right: 10px;
+    bottom: 80px;
+    z-index: +1;
+    font-size: 15px;
+}
 
 .mag_head {
     width: 50px;

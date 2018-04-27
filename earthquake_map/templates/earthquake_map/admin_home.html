@@ -4,7 +4,7 @@
 		<meta charset='utf-8' />
 		<title>SkyAlert</title>
 		<link type= "text/css" rel = "stylesheet"
-			  href = "{% static 'home/main1.css'%}" >
+			  href = "{% static 'home/main2.css'%}" >
 		
 	</head>
 	<body>
@@ -21,7 +21,7 @@
              <a href = "{% url 'data' %}"><button id = "upload">Data</button></a>
          </div>
          <div id = 'logoutdiv'>
-         	<a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+         	<a id ='logout-link'class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
          </div>
 
         <div id = "intro">
