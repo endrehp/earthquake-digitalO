@@ -69,27 +69,25 @@ document.getElementById('slider').addEventListener('input', function(e) {
   updateLayer(Time)  
 });
 
-
-document.querySelector('.btn-pause').addEventListener('click', function() { 
+document.getElementById('stop').addEventListener('click', function() {
     if (l > 0) {
-        pause();}});
+    reset();
+    document.getElementById('play-pause').innerHTML= '<span class="oi oi-media-play"></span>';
+    }});
 
-document.querySelector('.btn-reset').addEventListener('click', function() {
-    if (l > 0) {
-    reset();}});
-
-document.querySelector('.btn').addEventListener('click', function() {
-    if (l > 0 && play == false ){
+document.getElementById('play-pause').addEventListener('click', function() {
+  if (l > 0 && play == false ){
         play_b();
-        document.querySelector('.btn').innerHTML= 'Pause'; //'<i class="ion-ios-plus-outline"></i>';
+        document.getElementById('play-pause').innerHTML= '<span class="oi oi-media-pause"></span>'; //'<i class="ion-ios-plus-outline"></i>';
     }
     
     else if (l>0 && play == true){
 		pause();
-	   document.querySelector('.btn').innerHTML= 'Play';//'<i class="ion-ios-plus-outline"></i>';
+	   document.getElementById('play-pause').innerHTML= '<span class="oi oi-media-play"></span>';//'<i class="ion-ios-plus-outline"></i>';
 	}});
 
 });
+
 
 function add_data() {
 //setEndTime();
@@ -372,17 +370,26 @@ function speed_x(e) {
 };
 
 
+document.addEventListener('DOMContentLoaded', function() {
+   
+    var magnitudes = document.getElementsByClassName('magnitude')
+    
+    for (var j = 0; j < magnitudes.length; j++){
+    var value = Number(magnitudes[j].innerText);
+        
+    if (value > 6.0) {
+        magnitudes[j].style.color = 'red';
+    }
+    
+    else if (value > 4.0) {
+        magnitudes[j].style.color = 'orange';
+    }
+    else {
+        magnitudes[j].style.color = 'green';
+    }
+    }
+}, false);
 
 
-/*
-function remove_and_export(export_callback) {
-    document.getElementById('remove').click(); 
-    console.log('remove clicked')
-    export_callback();
-}
 
-function export_callback() {
-    document.getElementById('export').click();
-    console.log('export clicked')
-}
-*/
+
