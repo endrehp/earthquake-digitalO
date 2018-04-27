@@ -272,7 +272,6 @@ function speed_x(e) {
         //document.getElementsByClassName('speed_col')[i].style.color = 'black';
     };
     
-    e.style.color='white';
     e.style.background='black';
     document.getElementById('play-pause').click();
     document.getElementById('play-pause').click();

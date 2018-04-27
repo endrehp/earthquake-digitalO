@@ -370,14 +370,13 @@ function undo_function() {
 
 
 function speed_x(e) {
-    speed = Number(e.innerText.slice(1))
+    speed = Number(e.innerText.slice(0,2))
     //console.log(speed)
     for (var i = 0; i < document.getElementsByClassName('speed_col').length; i++) {
-        document.getElementsByClassName('speed_col')[i].style.background = 'white';
-        document.getElementsByClassName('speed_col')[i].style.color = 'black';
+        document.getElementsByClassName('speed_col')[i].style.background = 'None';
+        //document.getElementsByClassName('speed_col')[i].style.color = 'black';
     };
     
-    e.style.color='white';
     e.style.background='black';
     document.getElementById('play-btn').click();
     document.getElementById('play-btn').click();
