@@ -117,8 +117,8 @@
         </div>
         <div id='slidercontainer2'>
         <h6 style='font-size: 10'>Epicenter Delay (seconds)</h6>
-        <input name='epi_delay' id='epi_delay' type='range' value="1", min="0", max="59" >    
-            <span id='epi_delay_value' style='float: right'></span>
+        <input name='epi_delay' id='epi_delay' type='range' value="0", min="0", max="59" >    
+            <span id='epi_delay_value' style='float: right;'></span>
         </div>
 
 	</form>
@@ -127,7 +127,6 @@
 <button id='export-btn' onclick="export_function()">Export</button>
 </div>
     <div>
-    <h6 style='font-size: 6'> message</h6>
 	{% if message %}
     
     <p> {{message}}</p>
