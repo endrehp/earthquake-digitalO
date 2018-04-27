@@ -45,6 +45,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   width:100%;
   left: 200px;
 }
+
 .slide-btn {
     height: 40px;
     width: 40px;
@@ -308,19 +309,9 @@ td: {
     top: 50px;
 }
 
-#console {
-  position: absolute;
-  bottom: 0;
-  width: 200px;
-  margin: 0;
-  padding: 10px 20px;
-  height: 300px;
-  background-color: white;
-}
-
-.edit_content {
-    width: 50px;
-    font-size: 10px;
-    color: #333333;
-    text-transform: uppercase;
+#console{
+    position:fixed;
+    right:0;
+    width: 200px;
+    height: 200px;
 }
