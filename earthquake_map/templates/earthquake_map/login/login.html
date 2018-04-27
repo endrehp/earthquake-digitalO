@@ -1,29 +1,60 @@
-
-<h1>Login</h1>
-
-<form method='POST' action="{% url 'login' %}">
-{% csrf_token %}
-
-<br />
-Username:
-<br />
-<input type='text' name='username' />
+<html>
+<head>
     
-<br />
-Password
-<br />
-<input type='password' name='password' />
-<br />
+{% load static %}
+<meta charset='utf-8' />
+<title>SkyAlert</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" href="{% static 'login/style_login.css' %}">
+<link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel='stylesheet' >
+</head>
+
+<body>
+    
+    <div class = "container">
+    <div class = 'login-form'>
+    
+
+    <form method='POST' action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <br />
+        Username
+        <br />
+        <input type='text' name='username' />
+    
+        <br />
+        Password
+        <br />
+        <input type='password' name='password' />
+        <br />
 
 
-<br />
-<input class='btn btn-primary' type='submit' value='Login' /> 
-</form>
+        <br />
+        <input class='btn btn-primary' type='submit' value='Login' /> 
+        </form>
 
-{% if error %}
-<br />
-{{error}}
-<br />
-{% endif %}
+        {% if error %}
+        <br />
+        {{error}}
+        <br />
+        {% endif %}
+    </div>
+        </div>
+    
 
+
+    
+    
+    
+    </body>
+</html>
 
