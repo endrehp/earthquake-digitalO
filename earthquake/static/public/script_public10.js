@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-console.log('begynn igjen')
+console.log('begynn ijen')
     
 var l = 0;
 var v =[];
@@ -43,7 +43,7 @@ map.on('load', function() {
     epi_info_url = 'media/epi_public_' + title + '.json'    
     
     getEpiInfo(epi_info_url)
-    console.log(epi_delay)
+    console.lgo
     console.log(epi_speed)
     
     
@@ -235,31 +235,26 @@ function getEpiInfo(epi_url) {
     });
     epi_speed = Number(epi_info.epi_speed);
     epi_delay = Number(epi_info.delay);
+    endTime = Number(epi_info.max_time);
+    slider_end_time.max = endTime;
  };
 
 function select_earthquake(e) {
     for (var i=0; i < document.getElementsByClassName('table_row').length; i++){
         document.getElementsByClassName('table_row')[i].style.background = 'white';
         document.getElementsByClassName('table_row')[i].style.color = '#333333';
-        /*
-        document.getElementsByClassName('inner_row1')[i].style.background = 'white';
-        document.getElementsByClassName('inner_row1')[i].style.color = 'black';
-        document.getElementsByClassName('inner_row2')[i].style.background = 'white';
-        document.getElementsByClassName('inner_row2')[i].style.color = 'black';
-        */
+        
     };
-    
     e.style.background = '#333333';
     e.style.color = 'white';
-    //e.getElementsByClassName('table_row')[0].style.background = 'black';
-    //e.getElementsByClassName('table_row')[1].style.background = 'black';
-    //e.getElementsByClassName('table_row')[0].style.color = 'white';
-    //e.getElementsByClassName('table_row')[1].style.color = 'white';
-    //e.innerHTML.style.color = 'white';
-    console.log(e.getElementsByClassName('table_row'))
+    
+    old_title = title;
     title = e.getElementsByClassName('title')[0].innerText;
-    url = 'media/public_' + title + '.geojson';
-    setEndTime();
+    
+    if (old_title != title) {
+        url = 'media/public_' + title + '.geojson';    
+        //setEndTime();
+    }
     
     document.getElementById('load').click()
 };
