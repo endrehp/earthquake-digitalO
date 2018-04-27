@@ -301,10 +301,13 @@ td: {
     cursor: pointer;
 }
 
-.logo: {
-    z-index: 10;
-    position: absolute;
-    left 300px;
-    top: 50px;
+.sky-logo {
+    position: fixed;
+    left: 30;
+    bottom: 0;
+    width: 200px;
+    display: flex;
+    align-content: center;
+
 }
 
