@@ -47,25 +47,25 @@ document.getElementById('slider').addEventListener('input', function(e) {
     updateLayer(Time)  
 });
 
-
-document.querySelector('.btn-pause').addEventListener('click', function() { 
+document.getElementById('stop').addEventListener('click', function() {
     if (l > 0) {
-        pause();}});
+    reset();
+    document.getElementById('play-pause').innerHTML= '<span class="oi oi-media-play"></span>';
+    }});
 
-document.querySelector('.btn-reset').addEventListener('click', function() {
-    if (l > 0) {
-    reset();}});
-
-document.querySelector('.btn').addEventListener('click', function() {
-    if (l > 0 && play == false ){
-    play_b();} else if (l>0 && play == true){
+document.getElementById('play-pause').addEventListener('click', function() {
+  if (l > 0 && play == false ){
+        play_b();
+        document.getElementById('play-pause').innerHTML= '<span class="oi oi-media-pause"></span>'; //'<i class="ion-ios-plus-outline"></i>';
+    }
+    
+    else if (l>0 && play == true){
 		pause();
-		//btn.toggleClass("btn-pause");
-		//return false; 
-		
+	   document.getElementById('play-pause').innerHTML= '<span class="oi oi-media-play"></span>';//'<i class="ion-ios-plus-outline"></i>';
 	}});
 
 });
+
 
 function add_data() {
 //setEndTime();
@@ -165,14 +165,7 @@ function setEndTime() {
     };
     }
 
-function setMaxZoom(){
-    if (mode=='public'){
-        map.setMaxZoom(9)
-    }
-    else 
-        map.setMaxZoom(22)
-    
-}
+
 function private_version() {
     map.addLayer({
       id: 'act' + l,
@@ -261,10 +254,10 @@ function select_earthquake(e) {
     for (var i=0; i < document.getElementsByClassName('table_row').length; i++){
         //console.log(document.getElementsByClassName('table_row')[i].innerHTML)
         document.getElementsByClassName('table_row')[i].style.background = 'white';
-        document.getElementsByClassName('table_row')[i].style.color = 'black';
+        document.getElementsByClassName('table_row')[i].style.color = '#333333';
     };
         
-    e.style.background = 'black';
+    e.style.background = '#333333';
     e.style.color = 'white';
     
     title = e.getElementsByClassName('title')[0].innerText;
@@ -275,19 +268,48 @@ function select_earthquake(e) {
 };
 
 function speed_x(e) {
-    speed = Number(e.innerText.slice(1))
+    speed = Number(e.innerText.slice(0,2))
     //console.log(speed)
     for (var i = 0; i < document.getElementsByClassName('speed_col').length; i++) {
-        document.getElementsByClassName('speed_col')[i].style.background = 'white';
-        document.getElementsByClassName('speed_col')[i].style.color = 'black';
+        document.getElementsByClassName('speed_col')[i].style.background = 'None';
+        //document.getElementsByClassName('speed_col')[i].style.color = 'black';
     };
     
-    e.style.color='white';
+    //e.style.color='white';
     e.style.background='black';
-    document.getElementById('play-btn').click();
-    document.getElementById('play-btn').click();
+    document.getElementById('play-pause').click();
+    document.getElementById('play-pause').click();
 };
 
+//set color by magnitude
+
+
+document.addEventListener('DOMContentLoaded', function() {
+   
+    var magnitudes = document.getElementsByClassName('magnitude')
+    
+    for (var j = 0; j < magnitudes.length; j++){
+    var value = Number(magnitudes[j].innerText);
+        
+    if (value > 6.0) {
+        magnitudes[j].style.color = 'red';
+    }
+    
+    else if (value > 4.0) {
+        magnitudes[j].style.color = 'orange';
+    }
+    else {
+        magnitudes[j].style.color = 'green';
+    }
+    }
+}, false);
+
+
+/*
+
+
+
+*/
 
 
 
