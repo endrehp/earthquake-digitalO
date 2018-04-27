@@ -237,7 +237,7 @@ function getEpiInfo(epi_url) {
 function select_earthquake(e) {
     for (var i=0; i < document.getElementsByClassName('table_row').length; i++){
         document.getElementsByClassName('table_row')[i].style.background = 'white';
-        document.getElementsByClassName('table_row')[i].style.color = 'black';
+        document.getElementsByClassName('table_row')[i].style.color = '#333333';
         /*
         document.getElementsByClassName('inner_row1')[i].style.background = 'white';
         document.getElementsByClassName('inner_row1')[i].style.color = 'black';

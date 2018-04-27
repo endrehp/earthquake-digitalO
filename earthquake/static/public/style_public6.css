@@ -255,7 +255,6 @@ td: {
 
 .titleLoc {
     width: 150px;
-    color: #333333; 
 }
 
 
@@ -289,14 +288,12 @@ td: {
 .mag_head {
     width: 50px;
     font-size: 10px;
-    color: #333333;
     text-transform: uppercase;
 }
 
 .date_head {
     width: 150px;
     font-size: 10px;
-    color: #333333;
     text-transform: uppercase;
 }
 
