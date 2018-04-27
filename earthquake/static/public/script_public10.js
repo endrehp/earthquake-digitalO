@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-console.log('begynn ijen')
+console.log('beginn ijen')
     
 var l = 0;
 var v =[];
@@ -40,7 +40,7 @@ map.on('load', function() {
     l += 1
     epi_url = 'media/epicenter_' + title + '.geojson';
     url = 'media/public_' + title + '.geojson';
-    epi_info_url = 'media/epi_public_' + title + '.json'    
+    epi_info_url = 'media/epi_info_' + title + '.json'    
     
     getEpiInfo(epi_info_url)
     console.log(epi_speed)
@@ -53,7 +53,10 @@ map.on('load', function() {
 document.getElementById('slider').addEventListener('input', function(e) {
   Time = parseInt(e.target.value);
     i = Time;
-  updateLayer(Time)  
+  updateLayer(Time) 
+    if (Time == endTime) {
+        document.getElementById('play-pause').click();
+    }
 });
 
 

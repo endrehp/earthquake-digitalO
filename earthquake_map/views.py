@@ -65,7 +65,7 @@ def editpublic(request):
             url = request.POST['url']
             temp_title = request.POST['main_title']
             public_url = 'media/public_' + temp_title +'.geojson'
-            epi_info_url = 'media/epi_public_' + temp_title +'.json'
+            epi_info_url = 'media/epi_info_' + temp_title +'.json'
             sn_list = sn.split(',')
             
             #if sn_list[0] != '':
