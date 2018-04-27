@@ -133,14 +133,14 @@ function add_data() {
           ['linear'],
           ['number', ['get', 'S_Gal']],
           0, '#000000',
-          5, '#b8ecff',
-          10,'#05bcff',
-          15,'#2fff05',
-          25,'#ffd505',
-          50,'#ff9f05',
-          75,'#ff6d05',
-          100,'#ff0505',
-          150,'#C70000'
+          5, '#6ecfdb', //1
+          10,'#73ce2c', //1
+          15,'#aadc00', //2
+          25,'#6bc50a',  //2
+          50,'#e9a102', //3
+          75,'#df4d11', //4
+          100,'#c12b1c',  //5
+          150,'#a14090'  //6
             
           
         ],
@@ -237,11 +237,14 @@ v = [];
 for (var j=0; j < endTime; j++) {
     
     v.push(setTimeout( function () {
-        
-        document.getElementById('slider').value=i;
+        if (i<endTime){
+            document.getElementById('slider').value=i;
         Time = i;
         
         i++;
+        }
+        
+        
         updateLayer(Time) }, j*1000/speed));
     }
     play = true;
