@@ -43,7 +43,6 @@ map.on('load', function() {
     epi_info_url = 'media/epi_public_' + title + '.json'    
     
     getEpiInfo(epi_info_url)
-    console.lgo
     console.log(epi_speed)
     
     
@@ -235,8 +234,15 @@ function getEpiInfo(epi_url) {
     });
     epi_speed = Number(epi_info.epi_speed);
     epi_delay = Number(epi_info.delay);
-    endTime = Number(epi_info.max_time);
-    slider_end_time.max = endTime;
+    
+    if (epi_info.max_time) { 
+    
+        endTime = Number(epi_info.max_time);
+        slider_end_time.max = endTime;
+    }
+    else {
+        setEndTime();
+    }
  };
 
 function select_earthquake(e) {
