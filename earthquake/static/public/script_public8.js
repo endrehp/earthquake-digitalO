@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-console.log('bejunn igjen')
+console.log('begynn igjen')
     
 var l = 0;
 var v =[];
@@ -152,7 +152,7 @@ function add_data() {
         ],*/
         
         'circle-stroke-width': 2,
-        'circle-stroke-color': 'green',
+        'circle-stroke-color': '#E06B2D',
         'circle-opacity': 0
       }
     });

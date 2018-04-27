@@ -157,7 +157,7 @@ function add_data() {
         },    
         
         'circle-stroke-width': 2,
-        'circle-stroke-color': 'green',
+        'circle-stroke-color': '#E06B2D',
         'circle-opacity': 0
       }
     });
