@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-console.log('begg igjen')
+console.log('beggy igjen')
 
 var l = 0;
 var v =[];
@@ -16,6 +16,8 @@ var title;
 var epi_speed = 1;
 var epi_delay = 0;
 var slider_end_time;
+var duration_min;
+var duration_sec;
 var filterlist;
 var hidden_sensors = [];
 
@@ -32,6 +34,8 @@ var map = new mapboxgl.Map({
 
 map.on('load', function() {
     slider_end_time = document.getElementById('slider');
+    duration_min = document.getElementById('duration_min');
+    duration_sec = document.getElementById('duration_sec');
     
     
     document.querySelector('.new-data').addEventListener('click', function () {
@@ -270,6 +274,11 @@ function setEndTime() {
         
         slider_end_time.max = data.features[b-1].properties['Time'];
         endTime = data.features[b-1].properties['Time'];    
+        endTime_disp = display_time(endTime).split(':');
+        duration_min.value = endTime_disp[0];
+        duration_sec.value = endTime_disp[1];
+        console.log(endTime_disp[0])
+        console.log(endTime_disp[1])
     })
     
     };
