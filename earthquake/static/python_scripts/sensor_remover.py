@@ -16,8 +16,9 @@ def remove_and_export(url, public_url,epi_info_url, sn_list):
             data['features'] = [element for element in data['features'] if not int(element['properties']['Sn']) == int(sn)]
     
     if os.path.isfile(public_url):
-                os.remove(public_url)
-                os.remove(epi_info_url)
+        os.remove(public_url)
+    if os.path.isfile(epi_info_url):
+        os.remove(epi_info_url)
                 
     with open(public_url, 'w') as new_file: 
         geojson.dump(data, new_file)

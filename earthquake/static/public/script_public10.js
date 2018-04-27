@@ -1,85 +1,62 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-console.log('begg igjen')
-
+console.log('begynn ijen')
+    
 var l = 0;
 var v =[];
 var i;
 var Time;
-var url; 
-
-var epi_url;
+var url; //= mode + '_' + earthquakeDate;
 var play = false;
+var b;
+var a;
 var endTime = 700;
 var speed = 10;
 var title;
-var epi_speed = 1;
-var epi_delay = 0;
+var epi_url;
+var epi_info_url;
+var epi_speed;
+var epi_delay;
 var slider_end_time;
-var filterlist;
-var hidden_sensors = [];
 
-
+    
 var map = new mapboxgl.Map({
   container: 'map', // container element id
   style: 'mapbox://styles/mapbox/light-v9',
   center: [-98.2022, 16.6855], // initial map center in [lon, lat]
   zoom: 5.5,
-  maxZoom: 8
+  maxZoom: 9
 });
-
 
 
 map.on('load', function() {
     slider_end_time = document.getElementById('slider');
-    
-    
     document.querySelector('.new-data').addEventListener('click', function () {
     
     if (l > 0) {
     map.removeLayer('earthquake' + l);
     map.removeLayer('epicenter' + l)
-    
-    }
-        
+    };  
     l += 1
     epi_url = 'media/epicenter_' + title + '.geojson';
+    url = 'media/public_' + title + '.geojson';
+    epi_info_url = 'media/epi_public_' + title + '.json'    
+    
+    getEpiInfo(epi_info_url)
+    console.lgo
+    console.log(epi_speed)
+    
     
     add_data()
-    
     });
     
-
-document.querySelector('.update-layer').addEventListener('click', function () {
-updateLayer(Time);
-console.log('layer updated')
-});
     
 document.getElementById('slider').addEventListener('input', function(e) {
   Time = parseInt(e.target.value);
     i = Time;
-  // update the map
   updateLayer(Time)  
 });
-    
-document.getElementById('epi_speed').addEventListener('input', function(e) {
-    if (l > 0) {
-    reset();
-    document.getElementById('play-pause').innerHTML= '<span class="oi oi-media-play"></span>';
-    }
-    
-    epi_speed = Number(e.target.value);
-    document.getElementById('epi_speed_value').innerText = epi_speed;
-    
-    document.getElementById('load').click();
-    
-    
-});
 
-document.getElementById('epi_delay').addEventListener('input', function(e) {
-    epi_delay = Number(e.target.value);
-    document.getElementById('epi_delay_value').innerText = epi_delay;
-});
 
 document.getElementById('stop').addEventListener('click', function() {
     if (l > 0) {
@@ -100,15 +77,15 @@ document.getElementById('play-pause').addEventListener('click', function() {
 
 });
 
-
 function add_data() {
 //setEndTime();
+ 
     map.addLayer({
       id: 'earthquake' + l,
       type: 'circle',
       source: {
         type: 'geojson',
-        data: url, //replace this with the url of your own geojson
+        data: url, 
       },
       paint: {
         'circle-radius':
@@ -117,7 +94,7 @@ function add_data() {
             'interpolate',
           ['linear'],
           ['number', ['get', 'S_Gal']],
-        0, 6,
+        0, 3,
         5, 16,
         10, 20,
         50, 25,
@@ -136,11 +113,8 @@ function add_data() {
           50,'#ff9f05',
           75,'#ff6d05',
           100,'#ff0505',
-          150,'#C70000'
-            
-          
+          150,'#C70000'  
         ],
-        
         'circle-opacity': 0.8
       }
     }, 'admin-2-boundaries-dispute');
@@ -155,6 +129,12 @@ function add_data() {
       paint: {
         'circle-radius': {
         'property': 'Rad',
+        //'type': 'exponential',
+        //stops: [[0,0],[22,5000000]],
+        //base: 2
+            
+        //},
+            
             
         stops:[ 
             [{zoom: 0, value: 0}, 0],
@@ -164,7 +144,15 @@ function add_data() {
             
             ],
         base: 2,
-        },    
+        },
+            
+        /*'circle-radius':  
+          ['interpolate',
+          ['linear'],
+          ['number', ['get', 'Rad']],
+        0, 0,
+        700, 700*epi_speed
+        ],*/
         
         'circle-stroke-width': 2,
         'circle-stroke-color': '#E06B2D',
@@ -172,83 +160,34 @@ function add_data() {
       }
     });
     
-
-	
-    map.on('click', 'earthquake' + l, function (e) {
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var serial_number = e.features[0].properties.Sn;
-        var description = 
-            '<button id = "hide_sensor" onclick = "fill_form(\'' + serial_number +'\' );"> Hide sensor </button>'
-            ;
-        
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-
-        new mapboxgl.Popup()
-            .setLngLat(coordinates)
-            .setHTML(description)
-            .addTo(map);
-    })
-
 reset();
 };
 
 
 function updateLayer(Time) {
-    //map.setFilter('earthquake'+ l, ['==', ['number', ['get', 'Time']], Time]);
-    filterlist = ['all', ['==', ['number', ['get', 'Time']], Time]]; 
-    
-    if (hidden_sensors.length > 0) {
-        for (var i = 0; i<hidden_sensors.length; i++) {
-        filterlist.push(['!=', ['number', ['get', 'Sn']], hidden_sensors[i]]) 
-    }};
-    
-    //filterlist = ['all', ['==', ['number', ['get', 'Time']], Time], ['!=', ['number', ['get', 'Sn']], 1604396]];
-    map.setFilter('earthquake' + l, filterlist);
-    
-    
-    //map.setFilter('earthquake'+l, ['!=', ['number', ['get', 'Sn']], 1604396])
-    
-    if (Time >= epi_delay) {
-    map.setFilter('epicenter'+ l, ['==', ['number', ['get', 'Time']], Time-epi_delay]);
-    }
-    else {
-        map.setFilter('epicenter'+ l, ['==', ['number', ['get', 'Time']], 0]);
-    }
-    
-        
+    map.setFilter('earthquake'+ l, ['==', ['number', ['get', 'Time']], Time+epi_delay]); 
+    map.setFilter('epicenter'+ l, ['==', ['number', ['get', 'Time']], Time]);
     document.getElementById('active-hour').innerText = display_time(Time);
-
+    
 };
 
 function play_b() {
 
 if (play == false) {
 v = [];
-
-for (var j=0; j < endTime; j++) {
-    
+for (var j=0; j < endTime; j++) {    
     v.push(setTimeout( function () {
-        
         document.getElementById('slider').value=i;
         Time = i;
-        
         i++;
         updateLayer(Time) }, j*1000/speed));
     }
     play = true;
-}
-    
+}    
 };
 
 function reset() { 
-    
     pause();
-    
     i = 0;
     document.getElementById('slider').value=i;
     Time = i;
@@ -260,13 +199,12 @@ function pause() {
     for (var j = 0; j < v.length; j++){
           clearTimeout(v[j])}
     };
-    play = false;
-        
+    play = false; 
     };
 
 function setEndTime() {
     $.getJSON(url, function (data) {
-        var b = data.features.length;
+        b = data.features.length;
         
         slider_end_time.max = data.features[b-1].properties['Time'];
         endTime = data.features[b-1].properties['Time'];    
@@ -274,18 +212,6 @@ function setEndTime() {
     
     };
 
-	
-
-    // Change the cursor to a pointer when the mouse is over the places layer.
-    map.on('mouseenter', 'places', function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'places', function () {
-        map.getCanvas().style.cursor = '';
-    });
-    
 function display_time(Time) {
     var minutes   = Math.floor(Time / 60);
     var seconds = Time - (minutes * 60);
@@ -296,92 +222,58 @@ function display_time(Time) {
 };
 
 
-
+function getEpiInfo(epi_url) {
+     epi_info = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': epi_url,
+        'dataType': "json",
+        'success': function (data) {
+            epi_info = data;
+        }
+    });
+    epi_speed = Number(epi_info.epi_speed);
+    epi_delay = Number(epi_info.delay);
+    endTime = Number(epi_info.max_time);
+    slider_end_time.max = endTime;
+ };
 
 function select_earthquake(e) {
-    
     for (var i=0; i < document.getElementsByClassName('table_row').length; i++){
-        //console.log(document.getElementsByClassName('table_row')[i].innerHTML)
         document.getElementsByClassName('table_row')[i].style.background = 'white';
-        document.getElementsByClassName('table_row')[i].style.color = 'black';
+        document.getElementsByClassName('table_row')[i].style.color = '#333333';
         
-    
     };
-        
-    e.style.background = 'black';
+    e.style.background = '#333333';
     e.style.color = 'white';
+    
     old_title = title;
     title = e.getElementsByClassName('title')[0].innerText;
     
     if (old_title != title) {
-        hidden_sensors = []
-        title = e.getElementsByClassName('title')[0].innerText;
-        url = 'media/edit_public_' + title + '.geojson';
-        setEndTime();
+        url = 'media/public_' + title + '.geojson';    
+        //setEndTime();
     }
     
-	document.getElementById('load').click();
-}
-
-function fill_form(number){
-	
-    console.log(number)
-    pushAndUpdate(Number(number), clickToUpdate);
-    console.log('pushet of opdatert')
-    document.getElementsByClassName('mapboxgl-popup-close-button')[0].click()
+    document.getElementById('load').click()
 };
 
-
-
-function pushAndUpdate(number, update) {
-    hidden_sensors.push(Number(number))
-    update();
-}
-
-function clickToUpdate () {
-    document.getElementById('update-layer').click();
-    console.log('prøvde å klikke')
-}
-
-
-function export_function() {
-    
-    if (title == undefined){
-            alert('No earthquake chosen')
-        }
-    
-    else {
-    var result = confirm('Are you sure you want to export?')
-    if (result) {
-        document.getElementById('title1').value = title; 
-        document.getElementById('url').value = url; 
-        document.getElementById('sn').value = hidden_sensors.join()
-        document.getElementById('epi_speed_post').value = epi_speed;
-        document.getElementById('epi_delay_post').value = epi_delay;
-        document.getElementById('export').click();
-    };
-    };
-}
-
-function undo_function() {
-    hidden_sensors.splice(-1,1)
-    document.getElementById('update-layer').click();
-}
-
-
 function speed_x(e) {
-    speed = Number(e.innerText.slice(1))
+    speed = Number(e.innerText.slice(0,2))
     //console.log(speed)
     for (var i = 0; i < document.getElementsByClassName('speed_col').length; i++) {
-        document.getElementsByClassName('speed_col')[i].style.background = 'white';
-        document.getElementsByClassName('speed_col')[i].style.color = 'black';
+        document.getElementsByClassName('speed_col')[i].style.background = 'None';
+        //document.getElementsByClassName('speed_col')[i].style.color = 'black';
     };
     
     e.style.color='white';
     e.style.background='black';
-    document.getElementById('play-btn').click();
-    document.getElementById('play-btn').click();
+    document.getElementById('play-pause').click();
+    document.getElementById('play-pause').click();
 };
+
+//set color by magnitude
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -405,5 +297,8 @@ document.addEventListener('DOMContentLoaded', function() {
 }, false);
 
 
+/*
 
 
+
+*/

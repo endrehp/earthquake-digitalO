@@ -24,7 +24,7 @@
 
 <div id='map'></div>
 
-<script src="{% static 'editpublic/script8.js' %}"></script>  
+<script src="{% static 'editpublic/script9.js' %}"></script>  
 
 <a id='home_button' href="{% url 'admin_home' %}"><span class="oi oi-home"></span></a>
     
@@ -119,6 +119,11 @@
         <h6 style='font-size: 10'>Earthquake Delay (seconds)</h6>
         <input name='epi_delay' id='epi_delay' type='range' value="0", min="0", max="59" >    
             <span id='epi_delay_value' style='float: right;'></span>
+        </div>
+        
+        <div id='duration'>
+            <h6 style='font-size: 10'>Duration</h6>
+            <input id='duration_min' type='number' name='duration_min' min='0' max='59' style='font-size:10' ><span>:</span><input id='duration_sec' type='number' name='duration_sec' min='0' max='59' style='font-size:10'>
         </div>
 
 	</form>
