@@ -21,7 +21,7 @@
     
 <div id='map'></div>
 
-<script src="{% static 'public/script_public10.js' %}"></script>  
+<script src="{% static 'public/script_public11.js' %}"></script>  
 
 <div class = "sky-logo"><img src="{% static 'editpublic/skyalert_logo.png' %}" height = '70'></div>
     
@@ -80,14 +80,16 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>Modal Header</h2>
+      <h2>Scale of intensity</h2>
     </div>
+      <img id = "logo" src = "{% static 'public/skyalert_logo.png' %}" width = '150px'> 
     <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
+      <div id = "weak" class = "color">Weak</div>
+      <div id = "mild" class = "color">Mild</div>
+      <div id = "moderate" class = "color">Moderate</div>
+      <div id = "strong" class = "color">Strong</div>
+      <div id = "violent" class = "color">Violent</div>
+      <div id = "severe" class = "color">Severe</div>
     </div>
   </div>
 
@@ -150,6 +152,121 @@ window.onclick = function(event) {
 	
 	<button class='new-data' id = "load" hidden ><i class="ion-ios-plus-outline"></i>Load</button>
    
+    
+    
+
+    <!---------------- SCRIPT FOR THE MODAL ---------------------> 
+    <script>
+var cancel = false;
+var id1;
+var id2;
+var id4;
+var id8;
+function pause() {
+  cancel = true;
+}
+function resume() {
+  cancel = false;
+}
+function stop() {
+  document.getElementById("myRange").value = 0;
+  document.getElementById("demo").innerHTML = 0;
+  cancel = false;
+  clearInterval(id1);
+  clearInterval(id2);
+  clearInterval(id4);
+  clearInterval(id8);
+}
+function move() {
+    clearInterval(id1);
+    clearInterval(id2);
+    clearInterval(id4);
+    clearInterval(id8);
+    var elem = document.getElementById("myRange").value; 
+    var width = 0;
+    id1 = setInterval(frame, 128);
+    function frame() {
+        if (width >= 700) {
+            clearInterval(id1);
+        }
+        if (cancel) {
+          return
+        } else {
+            width++;
+            var num = width; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num
+            document.getElementById("myRange").value = num;
+        }
+    }
+}
+function move2() {
+    clearInterval(id1);
+    clearInterval(id2);
+    clearInterval(id4);
+    clearInterval(id8);
+    var elem = document.getElementById("myRange").value; 
+    var width = 0;
+    id2 = setInterval(frame, 64);
+    function frame() {
+        if (width >= 700) {
+            clearInterval(id2);
+        } if (cancel) {
+          return
+        } else {
+            width++;
+            var num = width; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num
+            document.getElementById("myRange").value = num;
+        }
+    }
+}
+function move4() {
+    clearInterval(id1);
+    clearInterval(id2);
+    clearInterval(id4);
+    clearInterval(id8);
+    var elem = document.getElementById("myRange").value; 
+    var width = 0;
+    id4 = setInterval(frame, 32);
+    function frame() {
+        if (width >= 700) {
+            clearInterval(id4);
+        } if (cancel) {
+          return
+        } else {
+            width++;
+            var num = width; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num
+            document.getElementById("myRange").value = num;
+        }
+    }
+}
+function move8() {
+    clearInterval(id1);
+    clearInterval(id2);
+    clearInterval(id4);
+    clearInterval(id8);
+    var elem = document.getElementById("myRange").value; 
+    var width = 0;
+    id8 = setInterval(frame, 16);
+    function frame() {
+        if (width >= 700) {
+            clearInterval(id8);
+        } if (cancel) {
+          return
+        } else {
+            width++;
+            var num = width; 
+            num = num.toFixed(0)
+            document.getElementById("demo").innerHTML = num
+            document.getElementById("myRange").value = num;
+        }
+    }
+}
+</script>
 
 </body>
 </html>
