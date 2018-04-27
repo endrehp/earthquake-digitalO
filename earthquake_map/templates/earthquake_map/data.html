@@ -1,14 +1,18 @@
 
-
-
 <title>SkyAlert</title>
-<h1>Upload Data</h1>
-<a target="_blank" href="http://www2.ssn.unam.mx:8080/catalogo">SSN earthquake catalog</a>
+<h1>Data</h1>
 {% load static %}
 <link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel='stylesheet' >
 <link type= "text/css" rel = "stylesheet"
-			  href = "{% static 'data/style.css'%}" >
+			  href = "{% static 'data/style_data.css'%}" >
 <script src="{% static 'data/script_data.js' %}"></script>  
+
+<a id='home_button' href="{% url 'admin_home' %}"><span class="oi oi-home"></span></a>
+<a id ='SSN'target="_blank" href="http://www2.ssn.unam.mx:8080/catalogo">SSN earthquake catalog</a>
+
+
+    <div class = 'data-form'>
+        <h3> New earthquake </h3>
 <form method='POST' action="{% url 'data' %}" enctype="multipart/form-data">
 {% csrf_token %}
 
@@ -24,7 +28,7 @@ Magnitude:
 
 <br />
 <br />
-Epsienter information:
+<b>Epsienter information</b>
 <br />
 Longitude
 <br />
@@ -42,15 +46,13 @@ Excel data:
 <br />
 <input type='file' name='excel_data' />
     
-<input type="text" id="delete_title" name="delete_title" hidden />
+<input type="text" id="delete_title" name="delete_title" hidden/>
 
 
     
 <input id='submit-btn' class='btn btn-primary' type='submit' value='Upload' /> 
 </form>
-
-<a href="{% url 'admin_home' %}">Return to home</a>
-
+        <div class = "error-message">
 {% if error %}
 <br />
 {{error}}
@@ -62,7 +64,16 @@ Excel data:
 {{message}}
 <br />
 {% endif %}
+</div>
+        </div>
 
+
+
+
+
+
+<div class = "table">
+    <h3>Uploaded earthquakes</h3>
 
 
 {% if earthquakes %}
@@ -103,4 +114,4 @@ Excel data:
 </table>
     
 {% endif %}
-
+</div>
