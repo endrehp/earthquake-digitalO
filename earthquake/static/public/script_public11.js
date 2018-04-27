@@ -53,9 +53,9 @@ map.on('load', function() {
 document.getElementById('slider').addEventListener('input', function(e) {
   Time = parseInt(e.target.value);
     i = Time;
-  updateLayer(Time) 
-    if (Time == endTime) {
-        document.getElementById('play-pause').click();
+  updateLayer(Time); 
+    if (Time == endTime && play == true){
+        document.getElementById('play-pause').click()
     }
 });
 
@@ -177,11 +177,16 @@ function play_b() {
 
 if (play == false) {
 v = [];
-for (var j=0; j < endTime; j++) {    
+for (var j=0; j < endTime; j++) {  
+    
     v.push(setTimeout( function () {
+        
+    if (i < endTime){
         document.getElementById('slider').value=i;
         Time = i;
         i++;
+        
+    }
         updateLayer(Time) }, j*1000/speed));
     }
     play = true;
@@ -238,6 +243,8 @@ function getEpiInfo(epi_url) {
     epi_speed = Number(epi_info.epi_speed);
     epi_delay = Number(epi_info.delay);
     
+    /*
+    
     if (epi_info.max_time) { 
     
         endTime = Number(epi_info.max_time);
@@ -246,6 +253,7 @@ function getEpiInfo(epi_url) {
     else {
         setEndTime();
     }
+    */
  };
 
 function select_earthquake(e) {
@@ -262,7 +270,7 @@ function select_earthquake(e) {
     
     if (old_title != title) {
         url = 'media/public_' + title + '.geojson';    
-        //setEndTime();
+        setEndTime();
     }
     
     document.getElementById('load').click()
@@ -288,18 +296,18 @@ document.addEventListener('DOMContentLoaded', function() {
    
     var magnitudes = document.getElementsByClassName('magnitude')
     
-    for (var j = 0; j < magnitudes.length; j++){
-    var value = Number(magnitudes[j].innerText);
+    for (var k = 0; k < magnitudes.length; k++){
+    var value = Number(magnitudes[k].innerText);
         
     if (value > 6.0) {
-        magnitudes[j].style.color = 'red';
+        magnitudes[k].style.color = 'red';
     }
     
     else if (value > 4.0) {
-        magnitudes[j].style.color = 'orange';
+        magnitudes[k].style.color = 'orange';
     }
     else {
-        magnitudes[j].style.color = 'green';
+        magnitudes[k].style.color = 'green';
     }
     }
 }, false);

@@ -129,9 +129,13 @@ if (play == false) {
 v = [];
 for (var j=0; j < endTime; j++) {
     v.push(setTimeout( function () {
+        
+        if (i < endTime){
         document.getElementById('slider').value=i;
         Time = i;
         i++;
+        
+    }
         updateLayer(Time) }, j*1000/speed));
     }
     play = true;
