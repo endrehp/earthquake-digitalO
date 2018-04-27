@@ -76,6 +76,9 @@ def editpublic(request):
             
             #sensor_remover.export_func(temp_title)
             if request.POST['epi_speed'] and request.POST['epi_delay']:
+                print('epi_export with values:')
+                print(request.POST['epi_speed'])
+                print(request.POST['epi_delay'])
                 export_epi_info(request.POST['epi_speed'], request.POST['epi_delay'], temp_title)
             
             earthquake = Earthquake_object.objects.all().filter(title=temp_title).update(public_exists = True)

@@ -319,6 +319,7 @@ td: {
   padding: 10px 20px;
   height: 300px;
   background-color: white;
+  text-transform: uppercase;
 }
 
 .edit_content {

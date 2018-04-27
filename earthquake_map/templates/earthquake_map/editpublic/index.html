@@ -97,7 +97,7 @@
     
     
 <div id='console' style="border-top:2px solid #3333;" >
-    <h6 style='font-size: 14'>Edit Public</h6>
+    <h6 style='font-size: 10; font-weight: bold'>Edit Public</h6>
     
     <form method ='POST' action = "{%url 'edit_public' %}" enctype="multipart/form-data">
 		{% csrf_token %}
@@ -107,15 +107,18 @@
 		<input type = "text"  id = "title1" name = "main_title" hidden/>
 		<input  type="submit" name = "action" value = "remove" id = "remove" hidden/>	
 		<input type = "submit" name = "action" value = "export"  id = "export"  hidden />
+        
+        <input id='epi_speed_post' type='text' name='epi_speed' hidden/>	
+		<input id='epi_delay_post' type='text' name='epi_delay' hidden/>
         <div id='slidercontainer1'>
         <h6 style='font-size: 10'>Epicenter Speed</h6>
-        <input name='epi_speed' id='epi_speed' type='range' value="1", min="0", max="10" >
-            <span style='float: right'>10</span>
+        <input name='epi_speed' id='epi_speed' type='range' value="1" min="0" max="10" step='0.1'  >
+            <span id='epi_speed_value' style='float: right'></span>
         </div>
         <div id='slidercontainer2'>
-        <h6 style='font-size: 10'>Epicenter Delay</h6>
-        <input name='epi_delay' id='epi_delay' type='range' value="0", min="0", max="59" >    
-            <span style='float: right'>10</span>
+        <h6 style='font-size: 10'>Epicenter Delay (seconds)</h6>
+        <input name='epi_delay' id='epi_delay' type='range' value="1", min="0", max="59" >    
+            <span id='epi_delay_value' style='float: right'></span>
         </div>
 
 	</form>

@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-console.log('beg igjen')
+console.log('begg igjen')
 
 var l = 0;
 var v =[];
@@ -14,6 +14,7 @@ var endTime = 700;
 var speed = 10;
 var title;
 var epi_speed = 1;
+var epi_delay = 0;
 var slider_end_time;
 var filterlist;
 var hidden_sensors = [];
@@ -42,16 +43,8 @@ map.on('load', function() {
     }
         
     l += 1
-        
-
     epi_url = 'media/epicenter_' + title + '.geojson';
     
-    //speed = document.getElementById('speed').value;
-    epi_speed = document.getElementById('epi_speed').value;
-    epi_delay = document.getElementById('epi_delay').value;
-    
-    
-    console.log('legg til noe')
     add_data()
     
     });
@@ -67,6 +60,25 @@ document.getElementById('slider').addEventListener('input', function(e) {
     i = Time;
   // update the map
   updateLayer(Time)  
+});
+    
+document.getElementById('epi_speed').addEventListener('input', function(e) {
+    if (l > 0) {
+    reset();
+    document.getElementById('play-pause').innerHTML= '<span class="oi oi-media-play"></span>';
+    }
+    
+    epi_speed = Number(e.target.value);
+    document.getElementById('epi_speed_value').innerText = epi_speed;
+    
+    document.getElementById('load').click();
+    
+    
+});
+
+document.getElementById('epi_delay').addEventListener('input', function(e) {
+    epi_delay = Number(e.target.value);
+    document.getElementById('epi_delay_value').innerText = epi_delay;
 });
 
 document.getElementById('stop').addEventListener('click', function() {
@@ -344,6 +356,8 @@ function export_function() {
         document.getElementById('title1').value = title; 
         document.getElementById('url').value = url; 
         document.getElementById('sn').value = hidden_sensors.join()
+        document.getElementById('epi_speed_post').value = epi_speed;
+        document.getElementById('epi_delay_post').value = epi_delay;
         document.getElementById('export').click();
     };
     };
