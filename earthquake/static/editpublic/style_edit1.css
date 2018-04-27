@@ -284,6 +284,7 @@ td: {
     right: 10px;
     bottom: 80px;
     z-index: +1;    
+    font-size: 30px;
 }
 
 .mag_head {
