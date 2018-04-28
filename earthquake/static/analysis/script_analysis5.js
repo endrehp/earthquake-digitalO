@@ -268,6 +268,7 @@ function select_earthquake(e) {
     url = 'media/private_' + title + '.geojson';
     setEndTime();
 
+    document.getElementById('stop').click();
     document.getElementById('load').click();
 };
 

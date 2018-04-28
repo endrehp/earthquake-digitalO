@@ -331,7 +331,7 @@ function select_earthquake(e) {
         url = 'media/edit_public_' + title + '.geojson';
         setEndTime();
     }
-    
+    document.getElementById('stop').click()
 	document.getElementById('load').click();
 }
 

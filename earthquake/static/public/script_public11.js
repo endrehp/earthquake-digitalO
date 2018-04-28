@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-console.log('beginn ijen')
+console.log('bejinn ijen')
     
 var l = 0;
 var v =[];
@@ -243,17 +243,15 @@ function getEpiInfo(epi_url) {
     epi_speed = Number(epi_info.epi_speed);
     epi_delay = Number(epi_info.delay);
     
-    /*
+    
     
     if (epi_info.max_time) { 
     
-        endTime = Number(epi_info.max_time);
+        endTime = epi_info.max_time;
         slider_end_time.max = endTime;
     }
-    else {
-        setEndTime();
-    }
-    */
+    
+    
  };
 
 function select_earthquake(e) {
@@ -270,9 +268,9 @@ function select_earthquake(e) {
     
     if (old_title != title) {
         url = 'media/public_' + title + '.geojson';    
-        setEndTime();
+        //setEndTime();
     }
-    
+    document.getElementById('stop').click()
     document.getElementById('load').click()
 };
 
