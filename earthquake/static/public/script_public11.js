@@ -23,8 +23,8 @@ var slider_end_time;
 var map = new mapboxgl.Map({
   container: 'map', // container element id
   style: 'mapbox://styles/mapbox/light-v9',
-  center: [-98.2022, 16.6855], // initial map center in [lon, lat]
-  zoom: 5.5,
+  center: [-93.7, 17], // initial map center in [lon, lat]
+  zoom: 5.3,
   maxZoom: 9
 });
 

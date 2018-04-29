@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link type="text/css" rel="stylesheet" href="{% static 'editpublic/style_edit1.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'editpublic/style_edit2.css' %}">
 <link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel='stylesheet' >
 </head>
 
@@ -24,7 +24,7 @@
 
 <div id='map'></div>
 
-<script src="{% static 'editpublic/script_edit11.js' %}"></script>  
+<script src="{% static 'editpublic/script_edit13.js' %}"></script>  
     
 
 <a id='home_button' href="{% url 'admin_home' %}"><span class="oi oi-home"></span></a>
@@ -33,11 +33,12 @@
 
 {% if earthquakes %}
 
-    <table class="w3-table w3-centered w3-bordered" style = "width: 200px; color: #333333; ">
+    <table class="w3-table w3-centered w3-bordered w3-responsive" style = "width: 250px; color: #333333; height: 60%; position: fixed">
 
         <tr id='header_row' class = "header_row">
             <th class = "mag_head"  >Magnitude</th>
             <th class = "date_head" >Date & Location</th>
+            <th class = 'date_head'>Public</th>
         </tr>
 
 {% for earthquake in earthquakes reversed %}
@@ -48,6 +49,11 @@
                 <div class='title' ><b>{{earthquake.title}} </b> </div>    
                 <div class='city_info' >{{earthquake.distance}} km from {{earthquake.closest_city}}</div> 
             </td>
+            {% if earthquake.public_exists %}
+    <td><span class="oi oi-circle-check"></span></td>
+    {% else %}
+    <td> </td>
+    {% endif %}
         </tr>
     
 

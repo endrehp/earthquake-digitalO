@@ -25,8 +25,8 @@ var hidden_sensors = [];
 var map = new mapboxgl.Map({
   container: 'map', // container element id
   style: 'mapbox://styles/mapbox/light-v9',
-  center: [-98.2022, 16.6855], // initial map center in [lon, lat]
-  zoom: 5.5,
+  center: [-93.7, 17], // initial map center in [lon, lat]
+  zoom: 5.3,
   maxZoom: 8
 });
 
@@ -121,7 +121,7 @@ function add_data() {
             'interpolate',
           ['linear'],
           ['number', ['get', 'S_Gal']],
-        0, 6,
+        0, 3,
         5, 16,
         10, 20,
         50, 25,
