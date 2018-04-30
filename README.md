@@ -1,7 +1,7 @@
 # earthquake-digitalO
+Repository for group 4 in data-x. Team members: Jerry Wang, Krystal Ren, Endre Hauge Paulsen and Mari Hovem Leonhardsen. 
 
 This repository contains code for the web application available at earthquake-visualization.com
-
 The code for this application is written with the Django framework. Below is a brief description of the file hierarchy, and the most important files. 
 
 	1.	Earthquake
