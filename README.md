@@ -28,5 +28,5 @@ The code for this application is written with the Django framework. Below is a b
     		vi.	Data.html
   		b.	Models.py: Contains a model for earthquake_objects. 
   		c.	Views.py: Main controller script. Combines HTML templates with data input. 
-	3.	manage.py
+	3.	manage.py: run the runserver function in order to run the application locally. 
 	4.	requirements.txt: lists necessary libraries to run the app. 
