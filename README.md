@@ -4,7 +4,8 @@ This repository contains code for the web application available at earthquake-vi
 
 The code for this application is written with the Django framework. Below is a brief description of the file hierarchy, and the most important files. 
 
-1.	Earthquake 
+1.	Earthquake
+
 a.	Static
     i.	admin
     ii.	Analysis: contains CSS and JavaScript files for analysis page.
