@@ -6,8 +6,9 @@ The code for this application is written with the Django framework. Below is a b
 
 1.	Earthquake
 
-	a.	Static
-		i. admin
+a.	Static
+	
+	i. 	admin
     	ii.	Analysis: contains CSS and JavaScript files for analysis page.
     	iii.	Data: contains CSS and JavaScript files for data page.
    		iv.	Editpublic: contains CSS and JavaScript files for editpublic page.
