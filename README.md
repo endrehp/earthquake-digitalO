@@ -6,19 +6,19 @@ The code for this application is written with the Django framework. Below is a b
 
 1.	Earthquake
 
-a.	Static
-    i.	admin
-    ii.	Analysis: contains CSS and JavaScript files for analysis page.
-    iii.	Data: contains CSS and JavaScript files for data page.
-    iv.	Editpublic: contains CSS and JavaScript files for editpublic page.
-    v.	Files: contains cvs files with sensor information. 
-    vi.	Home: contains CSS and JavaScript files for home page.
-    vii.	Login: contains CSS and JavaScript files for login page.
-    viii.	open-iconic: contains style files
-    ix.	public: contains CSS and JavaScript files for public page.
-    x.	python_scripts: contains data processing files. 
-  b.	Settings.py
-  c.	Urls.py: links url to associated view.
+	a.	Static
+		i. admin
+    	ii.	Analysis: contains CSS and JavaScript files for analysis page.
+    	iii.	Data: contains CSS and JavaScript files for data page.
+   		iv.	Editpublic: contains CSS and JavaScript files for editpublic page.
+    	v.	Files: contains cvs files with sensor information. 
+    	vi.	Home: contains CSS and JavaScript files for home page.
+    	vii.	Login: contains CSS and JavaScript files for login page.
+    	viii.	open-iconic: contains style files
+    	ix.	public: contains CSS and JavaScript files for public page.
+    	x.	python_scripts: contains data processing files. 
+  	b.	Settings.py
+  	c.	Urls.py: links url to associated view.
 2.	Earthquake_map: The application folder. 
   a.	Templates
     i.	Analysis: HTML for ananlysis page. 
