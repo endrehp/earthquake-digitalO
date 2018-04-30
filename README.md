@@ -10,7 +10,7 @@ The code for this application is written with the Django framework. Below is a b
     		ii.	Analysis: contains CSS and JavaScript files for analysis page.
     		iii.	Data: contains CSS and JavaScript files for data page.
    			iv.	Editpublic: contains CSS and JavaScript files for editpublic page.
-    		v.	Files: contains cvs files with sensor information. 
+    		v.	Files: contains csv files with sensor information. 
     		vi.	Home: contains CSS and JavaScript files for home page.
     		vii.	Login: contains CSS and JavaScript files for login page.
     		viii.	open-iconic: contains style files
