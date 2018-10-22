@@ -83,8 +83,8 @@ DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'earthquakedb',
-        'USER': 'postgres',
-        'PASSWORD': 'D3qMRx2f.',
+        'USER': 'earthquakedbuser',
+        'PASSWORD': 'jordskjelv',
         'HOST': 'localhost', 
         'PORT': '5432',
     }
